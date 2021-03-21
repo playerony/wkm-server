@@ -1,0 +1,13 @@
+*.md
+*.sh
+*.yml
+*.json
+
+.env
+build
+.eslintrc
+.gitignore
+.prettierrc
+.eslintignore
+.editorconfig
+.prettierignore
