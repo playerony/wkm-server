@@ -6,6 +6,8 @@ import cookieParser from 'cookie-parser'
 
 import Routes from './interfaces/routes.interface'
 
+import errorMiddleware from './middlewares/error.middleware'
+
 class App {
   public app: express.Application
   public port: string | number
@@ -18,6 +20,7 @@ class App {
 
     this.initializeMiddlewares()
     this.initializeRoutes(routes)
+    this.initializeErrorHandling()
   }
 
   public listen() {
@@ -48,6 +51,10 @@ class App {
     routes.forEach((route) => {
       this.app.use('/', route.router)
     })
+  }
+
+  private initializeErrorHandling() {
+    this.app.use(errorMiddleware)
   }
 }
 

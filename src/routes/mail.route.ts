@@ -1,0 +1,27 @@
+import { Router } from 'express'
+
+import Route from '../interfaces/routes.interface'
+import MailController from '../controllers/mail.controller'
+
+import { ContactDataDto } from '../dto/contact.dto'
+import validationMiddleware from '../middlewares/validation.middleware'
+
+class MailRoute implements Route {
+  public path = '/mail'
+  public router = Router()
+  public mailController = new MailController()
+
+  constructor() {
+    this.initializeRoutes()
+  }
+
+  private initializeRoutes() {
+    this.router.post(
+      `${this.path}/send`,
+      validationMiddleware(ContactDataDto, 'body'),
+      this.mailController.send
+    )
+  }
+}
+
+export default MailRoute
