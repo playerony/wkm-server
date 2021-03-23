@@ -6,15 +6,17 @@ class MailService {
   private _transporter: Transporter
 
   constructor() {
-    this._transporter = nodemailer.createTransport({
-      port: 587,
-      secure: false,
-      host: 'smtp.ethereal.email',
+    const smtpConfig = {
+      port: 465,
+      secure: true,
+      host: 'smtp.gmail.com',
       auth: {
         user: process.env.EMAIL_LOGIN,
         pass: process.env.EMAIL_PASSWORD
       }
-    })
+    }
+
+    this._transporter = nodemailer.createTransport(smtpConfig)
   }
 
   public send = async ({ email, message, lastname, firstname }: Contact): Promise<void> => {
