@@ -10,11 +10,7 @@ class MailController {
     this._mailService = new MailService()
   }
 
-  public send = async (
-    req: Request,
-    res: Response,
-    next: NextFunction
-  ): Promise<void> => {
+  public send = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
       const contactData: ContactDataDto = req.body
 

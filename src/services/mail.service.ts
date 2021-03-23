@@ -8,6 +8,8 @@ class MailService {
 
   constructor() {
     this._transporter = nodemailer.createTransport({
+      port: 465,
+      secure: true,
       service: 'Gmail',
       host: 'smtp.gmail.com',
       auth: {
@@ -17,12 +19,7 @@ class MailService {
     })
   }
 
-  public send = async ({
-    email,
-    message,
-    lastname,
-    firstname
-  }: Contact): Promise<void> => {
+  public send = async ({ email, message, lastname, firstname }: Contact): Promise<void> => {
     try {
       const mailOptions = {
         text: message,
