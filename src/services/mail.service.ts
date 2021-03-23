@@ -1,4 +1,3 @@
-import { Response } from 'express'
 import nodemailer, { Transporter } from 'nodemailer'
 
 import Contact from '../interfaces/contact.interface'
@@ -8,6 +7,8 @@ class MailService {
 
   constructor() {
     this._transporter = nodemailer.createTransport({
+      port: 465,
+      secure: true,
       service: 'Gmail',
       host: 'smtp.gmail.com',
       auth: {
@@ -17,12 +18,7 @@ class MailService {
     })
   }
 
-  public send = async ({
-    email,
-    message,
-    lastname,
-    firstname
-  }: Contact): Promise<void> => {
+  public send = async ({ email, message, lastname, firstname }: Contact): Promise<void> => {
     try {
       const mailOptions = {
         text: message,
