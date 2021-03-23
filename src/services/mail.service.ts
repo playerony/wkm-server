@@ -7,10 +7,9 @@ class MailService {
 
   constructor() {
     this._transporter = nodemailer.createTransport({
-      port: 465,
-      secure: true,
-      service: 'Gmail',
-      host: 'smtp.gmail.com',
+      port: 587,
+      secure: false,
+      host: "smtp.ethereal.email",
       auth: {
         user: process.env.EMAIL_LOGIN,
         pass: process.env.EMAIL_PASSWORD
