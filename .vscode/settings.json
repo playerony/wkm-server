@@ -2,5 +2,7 @@
   "appService.zipIgnorePattern": [
     "node_modules{,/**}",
     ".vscode{,/**}"
-  ]
+  ],
+  "appService.defaultWebAppToDeploy": "/subscriptions/3d88add2-43f3-4c03-9ded-d38144236e9c/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/wkm-server",
+  "appService.deploySubpath": "."
 }

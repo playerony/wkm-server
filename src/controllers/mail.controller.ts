@@ -1,7 +1,7 @@
 import { Response, Request, NextFunction } from 'express'
 
 import MailService from '../services/mail.service'
-import { ContactDataDto } from '../dto/contact.dto'
+import { ContactDataDto } from '../dtos/contact.dto'
 
 class MailController {
   private _mailService: MailService
@@ -16,7 +16,7 @@ class MailController {
 
       await this._mailService.send(contactData)
 
-      res.status(200).json({ data: {}, message: 'send' })
+      res.status(200).json({ data: contactData, message: 'send' })
     } catch (error) {
       next(error)
     }
