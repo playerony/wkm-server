@@ -6,11 +6,11 @@ import { DataStoredInToken } from '../interfaces/auth.interface'
 
 const authMiddleware = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
-    const authorizationKey = req.headers['authorization-key']
+    const authorizationKey = req.headers['authorization-key'] as string
 
     if (authorizationKey) {
       const secret = process.env.JWT_SECRET
-      const verificationResponse: DataStoredInToken = await jwt.verify(authorizationKey, secret)
+      const verificationResponse = (await jwt.verify(authorizationKey, secret)) as DataStoredInToken
       const code = verificationResponse.code
 
       if (code === process.env.EMAIL_LOGIN) {

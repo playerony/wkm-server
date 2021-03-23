@@ -3,7 +3,7 @@ import { Router } from 'express'
 import Route from '../interfaces/routes.interface'
 import MailController from '../controllers/mail.controller'
 
-import { ContactDataDto } from '../dto/contact.dto'
+import { ContactDataDto } from '../dtos/contact.dto'
 import authMiddleware from '../middlewares/auth.middleware'
 import validationMiddleware from '../middlewares/validation.middleware'
 
