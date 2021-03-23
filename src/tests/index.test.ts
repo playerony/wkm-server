@@ -13,7 +13,7 @@ describe('Testing Index Routes', () => {
       const indexRoute = new IndexRoute()
       const app = new App([indexRoute])
 
-      return request(app.getServer()).get('/').send().expect({
+      return request(app.getServer()).get('/').expect({
         achievement: 'easter egg :pogchamp:',
         name: 'wkm-server',
         author: 'Paweł Wojtasiński'
