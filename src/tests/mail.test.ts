@@ -66,14 +66,10 @@ describe('Testing Mail Routes', () => {
         const mailRoute = new MailRoute()
         const app = new App([mailRoute])
 
-        return request(app.getServer())
-          .post('/mail/send')
-          .set('authorization-key', token)
-          .send(contactData)
-          .expect({
-            message:
-              'email should not be empty,email must be an email, message should not be empty,message must be a string, firstname should not be empty,firstname must be a string, lastname should not be empty,lastname must be a string'
-          })
+        return request(app.getServer()).post('/mail/send').set('authorization-key', token).send(contactData).expect({
+          message:
+            'email should not be empty,email must be an email, message should not be empty,message must be a string, firstname should not be empty,firstname must be a string, lastname should not be empty,lastname must be a string'
+        })
       })
     })
   })
