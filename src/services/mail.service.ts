@@ -1,4 +1,3 @@
-import { Response } from 'express'
 import nodemailer, { Transporter } from 'nodemailer'
 
 import Contact from '../interfaces/contact.interface'

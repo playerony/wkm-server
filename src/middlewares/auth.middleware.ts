@@ -6,7 +6,7 @@ import { DataStoredInToken } from '../interfaces/auth.interface'
 
 const authMiddleware = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
-    const authorizationKey = req.headers["authorization-key"]
+    const authorizationKey = req.headers['authorization-key']
 
     if (authorizationKey) {
       const secret = process.env.JWT_SECRET

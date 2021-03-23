@@ -1,18 +1,29 @@
 {
   "name": "wkm-server",
   "version": "0.0.0",
-  "description": "TypeScript + Express API Server",
-  "author": "",
+  "description": "wkm-server",
+  "author": "Paweł Wojtasiński",
   "license": "ISC",
   "scripts": {
     "build": "tsc",
     "lint:fix": "npm run lint -- --fix",
     "format": "prettier --write \"**/*\"",
+    "typecheck": "tsc --noEmit -p . --pretty",
     "test": "jest --forceExit --detectOpenHandles",
     "dev": "cross-env NODE_ENV=development npx nodemon",
     "reinstall-deps": "bash ./scripts/reinstall-deps.sh",
-    "lint": "eslint --ignore-path .gitignore --ext .ts src/",
-    "start": "npm run build && cross-env NODE_ENV=production node build/server.js"
+    "start": "npm run build && cross-env NODE_ENV=production node build/server.js",
+    "lint": "eslint --ignore-path .gitignore --ext .ts src/ && echo 'lint success'"
+  },
+  "lint-staged": {
+    "**/*.{js,ts,md}": [
+      "eslint --fix",
+      "git add"
+    ],
+    "**/*.{json}": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "husky": {
     "hooks": {
