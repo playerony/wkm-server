@@ -1,6 +1,7 @@
 import nodemailer, { Transporter } from 'nodemailer'
 
 import Contact from '../interfaces/contact.interface'
+import HttpException from '../exceptions/HttpException'
 
 class MailService {
   private _transporter: Transporter
@@ -28,7 +29,13 @@ class MailService {
         subject: `Wiadomość od ${firstname} ${lastname}!`
       }
 
-      await this._transporter.sendMail(mailOptions)
+      const isClientVerified = this._transporter.verify()
+
+      if (isClientVerified) {
+        return this._transporter.sendMail(mailOptions)
+      }
+
+      throw new HttpException(446, 'Connection to the SMTP provider has failed')
     } catch (err) {
       throw err
     }

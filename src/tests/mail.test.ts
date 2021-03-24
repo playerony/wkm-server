@@ -11,6 +11,8 @@ afterAll(async () => {
 
 beforeAll(() => {
   console.error = jest.fn()
+
+  jest.mock('../services/mail.service')
 })
 
 describe('Testing Mail Routes', () => {
