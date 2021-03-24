@@ -5,14 +5,14 @@ import App from '../app'
 import MailRoute from '../routes/mail.route'
 import { ContactDataDto } from '../dtos/contact.dto'
 
+jest.mock('../services/mail.service')
+
 afterAll(async () => {
   await new Promise<void>((resolve) => setTimeout(() => resolve(), 500))
 })
 
 beforeAll(() => {
   console.error = jest.fn()
-
-  jest.mock('../services/mail.service')
 })
 
 describe('Testing Mail Routes', () => {
