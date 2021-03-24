@@ -1,4 +1,5 @@
 import 'dotenv/config'
+
 import App from './app'
 
 import MailRoute from './routes/mail.route'

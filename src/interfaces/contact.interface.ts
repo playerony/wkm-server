@@ -1,8 +1,8 @@
-interface Contact {
+interface ContactData {
   email: string
   message: string
   lastname: string
   firstname: string
 }
 
-export default Contact
+export default ContactData
