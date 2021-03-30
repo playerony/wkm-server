@@ -35,7 +35,7 @@ class App {
 
   private initializeMiddlewares() {
     if (this.env === 'production') {
-      this.app.use(cors({ origin: 'domain.com', credentials: true }))
+      this.app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }))
     } else if (this.env === 'development') {
       this.app.use(cors({ origin: true, credentials: true }))
     }
