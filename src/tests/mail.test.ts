@@ -17,45 +17,6 @@ beforeAll(() => {
 
 describe('Testing Mail Routes', () => {
   describe('[POST] /mail/send', () => {
-    describe('Authorization', () => {
-      const contactData: ContactDataDto = {
-        message: 'message',
-        lastname: 'lastname',
-        firstname: 'firstname',
-        email: 'test@email.com'
-      }
-
-      it('should return 404 when auth token is missing', () => {
-        const mailRoute = new MailRoute()
-        const app = new App([mailRoute])
-
-        return request(app.getServer()).post('/mail/send').send(contactData).expect({ message: 'Authentication token missing' })
-      })
-
-      it('should return 401 when auth token is incorrect', () => {
-        const mailRoute = new MailRoute()
-        const app = new App([mailRoute])
-
-        return request(app.getServer())
-          .post('/mail/send')
-          .set('authorization-key', 'random token')
-          .send(contactData)
-          .expect({ message: 'Wrong authentication token' })
-      })
-
-      it('should pass when token is corrent', () => {
-        process.env.JWT_SECRET = 'secret'
-        process.env.EMAIL_LOGIN = 'test@test.com'
-
-        const token = jwt.sign({ code: 'test@test.com' }, 'secret')
-
-        const mailRoute = new MailRoute()
-        const app = new App([mailRoute])
-
-        return request(app.getServer()).post('/mail/send').set('authorization-key', token).send(contactData)
-      })
-    })
-
     describe('Validation', () => {
       it('should contain proper error messages for each field', () => {
         const contactData = {}
