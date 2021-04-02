@@ -4,7 +4,6 @@ import Route from '../interfaces/routes.interface'
 import MailController from '../controllers/mail.controller'
 
 import { ContactDataDto } from '../dtos/contact.dto'
-import authMiddleware from '../middlewares/auth.middleware'
 import validationMiddleware from '../middlewares/validation.middleware'
 
 class MailRoute implements Route {
@@ -17,7 +16,7 @@ class MailRoute implements Route {
   }
 
   private initializeRoutes() {
-    this.router.post(`${this.path}/send`, authMiddleware, validationMiddleware(ContactDataDto), this.mailController.send)
+    this.router.post(`${this.path}/send`, validationMiddleware(ContactDataDto), this.mailController.send)
   }
 }
 
