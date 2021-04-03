@@ -27,7 +27,7 @@ class MailService {
         to: process.env.EMAIL_LOGIN,
         from: `${firstname} ${lastname} <${email}>`,
         subject: `Wiadomość od ${firstname} ${lastname}!`,
-        html: `<h3>${firstname} ${lastname} pisze,</h3><p>${message}</p><h4>Kontaktowy email zwrotny: ${email}.</h4>`,
+        html: `<h3>${firstname} ${lastname} pisze,</h3><p>${message}</p><h4>Kontaktowy email zwrotny: ${email}.</h4>`
       }
 
       const isClientVerified = this._transporter.verify()
