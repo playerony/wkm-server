@@ -23,10 +23,11 @@ class MailService {
   public send = async ({ email, message, lastname, firstname }: Contact): Promise<void> => {
     try {
       const mailOptions = {
-        text: message,
+        replyTo: email,
         to: process.env.EMAIL_LOGIN,
         from: `${firstname} ${lastname} <${email}>`,
-        subject: `Wiadomość od ${firstname} ${lastname}!`
+        subject: `Wiadomość od ${firstname} ${lastname}!`,
+        html: `<h3>${firstname} ${lastname} pisze,</h3><p>${message}</p><h4>Kontaktowy email zwrotny: ${email}.</h4>`
       }
 
       const isClientVerified = this._transporter.verify()

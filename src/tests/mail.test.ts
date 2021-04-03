@@ -3,7 +3,6 @@ import request from 'supertest'
 
 import App from '../app'
 import MailRoute from '../routes/mail.route'
-import { ContactDataDto } from '../dtos/contact.dto'
 
 jest.mock('../services/mail.service')
 
